@@ -1,3 +1,37 @@
+var RS_MRTDB = 'http://mrtdb-mrtool.127.0.0.1.nip.io/';
+
+function checkUser() {
+  if (! localStorage.rhid) {
+    $('#enterAssociateInfoModal').modal('show');
+  }
+};
+
+function saveUser() {
+  // { "rhid": "9053",
+  //   "name": "Andrea Leoncini",
+  //   "email": "aleoncin@redhat.com",
+  //   "costCenter": "420",
+  //   "car": { "registryNumber":"FB214ZM", "mileageRate": 0.89 }
+  // }
+  if($('#inputYear').val() != "")
+  var data = '{ "rhid": "' + $('#inputAssociateId').val() + '", ';
+  data += '"name": "' + $('#inputAssociateName').val() + '", ';
+  data += '"email": "' + $('#inputAssociateMail').val() + '", ';
+  data += '"costCenter": "' + $('#inputAssociateCostCenter').val() + '", ';
+  data += '"car": { "registryNumber": "' + $('#inputCarRegNumber').val() + '", "mileageRate": ' + $('#inputCarRate').val() + ' } ';
+  data += '}';
+  $.ajax({
+        type: "POST",
+        url: RS_MRTDB + "rs/associates/add",
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+          alert(data);
+        },
+  });
+};
+
 function initTripsTable() {
     var rhid = "9053";
     var month = $('#inputMonth').val();
