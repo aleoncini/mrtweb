@@ -4,7 +4,7 @@ var numberOfTrips = 0;
 var totalMileage = 0;
 
 function checkUser() {
-  if (localStorage.rhid.length > 3) {
+  if (localStorage.rhid) {
     $('#userName').text(localStorage.name);
   } else {
     $('#enterAssociateInfoModal').modal('show');
