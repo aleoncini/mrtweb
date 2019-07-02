@@ -37,7 +37,7 @@ function formatLocationList(locations) {
 function saveTrip() {
   var data = '{ "associateId": "' + localStorage.rhid + '", ';
   data += '"purpose": "' + $('#inputPurpose').val() + '", ';
-  data += '"location": { "destination": "' + locationName + '", "distance": ' + distance + '}, ';
+  data += '"location": { "destination": "' + locationName + '", "distance": ' + $('#inputDistance').val() + '}, ';
   data += '"date": { "day": ' + $('#inputDay').val() + ', "month": ' + $('#inputMonth :selected').val() + ', "year": ' + $('#inputYear :selected').val() + ' } ';
   data += '}';
   console.log(data);
